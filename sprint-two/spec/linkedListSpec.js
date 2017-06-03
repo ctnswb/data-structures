@@ -31,6 +31,11 @@ describe('linkedList', function() {
     expect(linkedList.head.value).to.equal(5);
   });
 
+  it('should return error message when trying to remove from an empty list',
+    function(){
+      expect(linkedList.removeHead()).to.equal('The list is empty!');
+    });
+
   it('should return the value of the former head when removeHead is called', function() {
     linkedList.addToTail(4);
     expect(linkedList.removeHead()).to.equal(4);

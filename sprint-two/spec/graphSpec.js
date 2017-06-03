@@ -27,6 +27,18 @@ describe('graph', function() {
     expect(graph.contains(2)).to.equal(false);
   });
 
+  it('should return error message when trying to remove a node that doesn\'t exist', function(){
+    graph.addNode(2);
+    graph.addNode(4);
+    expect(graph.removeNode(3)).to.equal('Cannot remove. Node doesn\'t exist.');
+  });
+
+  it('should return error message when trying to remove an edge that doesn\'t exist', function(){
+    graph.addNode(2);
+    graph.addNode(4);
+    expect(graph.removeEdge(2, 4)).to.equal('Cannot remove. Edge doesn\'t exist.');
+  });
+
   it('should create edges between two nodes', function() {
     graph.addNode(2);
     graph.addNode(1);

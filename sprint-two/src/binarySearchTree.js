@@ -5,19 +5,22 @@ var BinarySearchTree = function(value) {
   bst.right = null;
 
   bst.insert = function(value) {
-   if (value < bst.value) {
+
+    if (value < bst.value) {
       if (bst.left !== null) {
         bst.left.insert(value);
       } else {
-         bst.left = BinarySearchTree(value);
+        bst.left = BinarySearchTree(value);
       }
-   } else if (value > bst.value) {
+    } else if (value > bst.value) {
       if (bst.right !== null) {
         bst.right.insert(value);
       } else {
         bst.right = BinarySearchTree(value);
       }
-   }
+    } else {
+      return 'Value not added. It\'s already in the tree.';
+    }
   };
 
   bst.contains = function(value) {

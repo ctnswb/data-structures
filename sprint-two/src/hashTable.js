@@ -38,12 +38,18 @@ HashTable.prototype.retrieve = function(k) {
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
-
-  for (var i = 0; i < bucket.length; i++) {
-    if (bucket[i][0] === k) {
-      bucket.splice(i, 1);
+  if (bucket) {
+    for (var i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === k) {
+        bucket.splice(i, 1);
+        removed = true;
+      }
     }
   }
+  else {
+    return 'Error! Key doesn\'t exist in hash table.';
+  }
+
 };
 
 

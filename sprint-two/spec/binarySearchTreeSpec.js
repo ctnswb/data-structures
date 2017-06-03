@@ -28,6 +28,12 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.contains(8)).to.equal(false);
   });
 
+  it('should return a message if the value is already in the tree', function() {
+    binarySearchTree.insert(7);
+    expect(binarySearchTree.insert(5)).to.equal('Value not added. It\'s already in the tree.');
+    expect(binarySearchTree.right.insert(7)).to.equal('Value not added. It\'s already in the tree.');
+  });
+
   it('should execute a callback on every value in a tree using "depthFirstLog"', function() {
     var array = [];
     var func = function(value) { array.push(value); };

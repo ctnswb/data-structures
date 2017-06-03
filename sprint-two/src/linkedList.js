@@ -19,6 +19,8 @@ var LinkedList = function() {
       var formerHead = list.head;
       list.head = formerHead.next;
       return formerHead.value;
+    } else {
+      return 'The list is empty!';
     }
   };
 

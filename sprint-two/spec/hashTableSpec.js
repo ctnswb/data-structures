@@ -35,6 +35,10 @@ describe('hashTable', function() {
     expect(hashTable.retrieve('Steven')).to.equal(undefined);
   });
 
+  it('should return error message when trying to remove a key that doesn\'t exist', function() {
+    expect(hashTable.remove('Jason')).to.equal('Error! Key doesn\'t exist in hash table.');
+  });
+
   it('should handle hash function collisions', function() {
     var v1 = 'val1';
     var v2 = 'val2';

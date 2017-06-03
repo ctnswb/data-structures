@@ -18,10 +18,18 @@ describe('set', function() {
     expect(set.contains('Susan Sarandon')).to.equal(true);
   });
 
+    it('should return false if the set does not contain value', function() {
+    expect(set.contains('Danny Glover')).to.equal(false);
+  });
+
   it('should remove values from a set', function() {
     set.add('Mel Gibson');
     set.remove('Mel Gibson');
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should return error message when trying to remove a value that doesn\'t exist in the set', function() {
+    set.add('Mel Gib');
+    expect(set.remove('Mel Gibson')).to.equal('Error! The value doesn\'t exist in the set.');
+  });
 });

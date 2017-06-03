@@ -19,12 +19,14 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  for (otherNode in this.graph) {
-    this.removeEdge(otherNode, node);
-  }
 
   if (this.graph.hasOwnProperty(node)) {
+    for (otherNode in this.graph) {
+      this.removeEdge(otherNode, node);
+    }
     delete this.graph[node];
+  } else {
+    return 'Cannot remove. Node doesn\'t exist.';
   }
 };
 
@@ -46,8 +48,12 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  this.graph[fromNode].splice(this.graph[fromNode].indexOf(toNode), 1);
-  this.graph[toNode].splice(this.graph[toNode].indexOf(fromNode), 1);
+  if (this.hasEdge(fromNode,toNode)) {
+    this.graph[fromNode].splice(this.graph[fromNode].indexOf(toNode), 1);
+    this.graph[toNode].splice(this.graph[toNode].indexOf(fromNode), 1);
+  } else {
+    return ('Cannot remove. Edge doesn\'t exist.');
+  }
 };
 
 // Pass in a callback which will be executed on each node of the graph.

@@ -19,7 +19,11 @@ setPrototype.contains = function(item) {
 };
 
 setPrototype.remove = function(item) {
-  delete this._storage[item];
+  if (this.contains(item)){
+    delete this._storage[item];
+  } else {
+    return ('Error! The value doesn\'t exist in the set.');
+  }
 };
 
 /*
